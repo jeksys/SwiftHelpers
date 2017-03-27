@@ -16,3 +16,13 @@ postfix operator ~?
 public postfix func ~? <X> (x: X?) -> String {
     return x.unwrappedString()
 }
+
+extension Optional {
+    // True if the Optional is .None. Useful to avoid if-let.
+    var isNil: Bool {
+        if case .none = self {
+            return true
+        }
+        return false
+    }
+}
