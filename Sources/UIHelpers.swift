@@ -16,21 +16,6 @@ extension UIView {
 }
 
 extension UIViewController{
-    
-    func present(withNavigation viewController: UIViewController, isToolbarHidden: Bool = false){
-        let recordNC = MainViewController(rootViewController: viewController)
-        recordNC.navigationBar.barStyle = .black
-        recordNC.navigationBar.isTranslucent = false
-        recordNC.navigationBar.tintColor = .white
-        recordNC.isToolbarHidden = isToolbarHidden
-        recordNC.toolbar.isTranslucent = false
-        recordNC.toolbar.barStyle = .black
-        self.navigationController?.present(recordNC, animated: true)
-    }
-
-}
-
-extension UIViewController{
 
     func showMessage(_ title: String, message:String){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
