@@ -15,6 +15,18 @@ extension UIView {
     }
 }
 
+extension UIScrollView{
+    
+    func makeVisible(view: UIView, margin: CGFloat = 15, animated: Bool = false) {
+        if view.superview == self{
+            var frame = view.frame
+            frame.size.height = frame.size.height + margin
+            self.scrollRectToVisible(frame, animated: animated)
+        }
+    }
+    
+}
+
 extension UIViewController{
 
     func showMessage(_ title: String, message:String){
