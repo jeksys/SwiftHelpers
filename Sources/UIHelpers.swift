@@ -47,6 +47,13 @@ extension UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
 
+    func showConnectionError(message:String){
+        let messageConnection = "Please check your internet connection to continue".localized
+        let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 extension UIImage {
