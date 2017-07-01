@@ -20,3 +20,15 @@ open class ASPNETDateTransform: DateFormatterTransform {
     }
     
 }
+
+open class ASPNETDateTransformShort: DateFormatterTransform {
+    
+    public init() {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+        
+        super.init(dateFormatter: formatter)
+    }
+    
+}
