@@ -29,12 +29,14 @@ extension UIScrollView{
 
 extension UIViewController{
 
-    func showMessage(_ title: String, message:String){
+    func showMessage(_ title: String, message:String, completion: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { (action: UIAlertAction!) in
+            completion?()
+        }))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
     func showAlert(message:String){
         let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
@@ -46,14 +48,20 @@ extension UIViewController{
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
+    func showError(error:Error){
+        let alert = UIAlertController(title: "Error".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func showConnectionError(message:String){
         let messageConnection = "Please check your internet connection to continue".localized
         let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
         self.present(alert, animated: true, completion: nil)
     }
-
+    
 }
 
 extension UIImage {
