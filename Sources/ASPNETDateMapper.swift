@@ -48,13 +48,13 @@ open class ASPNETDateTransformShort2: DateFormatterTransform {
 open class  ASPNETDateTransformAll: TransformType {
     public typealias Object = Date
     public typealias JSON = String
+    let formatter = DateFormatter()
     
     public init() {
     }
     
     open func transformFromJSON(_ value: Any?) -> Date? {
         if let dateString = value as? String {
-            let formatter = DateFormatter()
             formatter.locale = Locale(identifier: "en_US_POSIX")
 
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
