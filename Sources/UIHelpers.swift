@@ -36,6 +36,16 @@ extension UIViewController{
         }))
         self.present(alert, animated: true, completion: nil)
     }
+
+    func showDeleteAlert(_ title: String?, message:String?, completion: (()->Void)? = nil){
+        let deleteAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        deleteAlert.addAction(UIAlertAction(title: "Delete".localized, style: .destructive, handler: { (action: UIAlertAction!) in
+            completion?()
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        present(deleteAlert, animated: true, completion: nil)
+    }
     
     func showAlert(message:String){
         let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
