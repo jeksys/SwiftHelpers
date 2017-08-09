@@ -77,6 +77,17 @@ extension UIViewController{
             self.present(alert, animated: true, completion: nil)
         }    }
     
+    var alertStyle: UIAlertControllerStyle{
+        get{
+            let style: UIAlertControllerStyle
+            if(UIDevice.current.userInterfaceIdiom == .pad){
+                style = .alert
+            }else{
+                style = .actionSheet
+            }
+            return style
+        }
+    }
 }
 
 extension UIImage {
