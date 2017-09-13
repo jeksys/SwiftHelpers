@@ -65,6 +65,10 @@ open class  ASPNETDateTransformAll: TransformType {
             if let date = formatter.date(from: dateString){
                 return date
             }
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SS"
+            if let date = formatter.date(from: dateString){
+                return date
+            }
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
             if let date = formatter.date(from: dateString){
                 return date
