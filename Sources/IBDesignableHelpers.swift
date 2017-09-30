@@ -1,3 +1,6 @@
+import UIKit
+import Foundation
+
 @IBDesignable extension UIButton{
     
     @IBInspectable var borderColor: UIColor?{
@@ -78,7 +81,7 @@
     func kern(kerningValue:CGFloat) {
         if let text = self.titleLabel!.text{
             let attributedString =  NSMutableAttributedString(attributedString: self.titleLabel!.attributedText ?? NSMutableAttributedString(string: text))
-            attributedString.addAttribute(NSKernAttributeName, value: kern, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.kern, value: kern, range: NSMakeRange(0, attributedString.length))
             self.setAttributedTitle(attributedString, for: .normal)
         }
     }
@@ -98,7 +101,7 @@
     func kern(kerningValue:CGFloat) {
         if let text = self.text{
             let attributedString =  NSMutableAttributedString(attributedString: self.attributedText ?? NSMutableAttributedString(string: text))
-            attributedString.addAttribute(NSKernAttributeName, value: kern, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedStringKey.kern, value: kern, range: NSMakeRange(0, attributedString.length))
             self.attributedText =  attributedString
         }
     }

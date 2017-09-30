@@ -6,6 +6,8 @@
 //  Copyright © 2017 Casting Workbook Services Inc. All rights reserved.
 //
 
+import Foundation
+
 extension Bundle{
     func readJson(fileName: String) -> String? {
         do {

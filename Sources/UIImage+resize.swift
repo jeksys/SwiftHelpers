@@ -5,6 +5,7 @@
 //  Created by Evgeny Yagrushkin on 2017-08-03.
 //  Copyright © 2017 Evgeny Yagrushkin. All rights reserved.
 //
+import UIKit
 
 
 extension UIImage {
