@@ -46,6 +46,17 @@ extension UIViewController{
         deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         present(deleteAlert, animated: true, completion: nil)
     }
+
+    func showConfirmActionAlert(_ title: String?, message:String?, actionTitle: String?, completion: (()->Void)? = nil){
+        let deleteAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        deleteAlert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action: UIAlertAction!) in
+            completion?()
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        present(deleteAlert, animated: true, completion: nil)
+    }
+
     
     func showAlert(message:String){
         delayOnMainQueue {
