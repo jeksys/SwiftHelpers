@@ -29,6 +29,26 @@ extension UIScrollView{
 
 extension UIViewController{
     
+    func showAskText(_ title: String?, text:String?, actionTitle: String? = "OK".localized, completion: ((String?)->Void)? = nil){
+        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (action: UIAlertAction!) in
+            completion?(nil)
+        }))
+        
+        alertController.addAction(UIAlertAction(title: actionTitle, style: .default, handler: { (action: UIAlertAction!) in
+            let text = alertController.textFields?.first?.text
+            completion?(text)
+        }))
+        
+        alertController.addTextField { (textField) -> Void in
+            textField.text = text
+        }
+        
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
     func showMessage(_ title: String, message:String, completion: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { (action: UIAlertAction!) in
@@ -56,7 +76,6 @@ extension UIViewController{
         deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
         present(deleteAlert, animated: true, completion: nil)
     }
-
     
     func showAlert(message:String){
         delayOnMainQueue {
