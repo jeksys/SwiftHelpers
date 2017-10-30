@@ -68,13 +68,13 @@ extension UIViewController{
     }
 
     func showConfirmActionAlert(_ title: String?, message:String?, actionTitle: String?, completion: (()->Void)? = nil){
-        let deleteAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        deleteAlert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action: UIAlertAction!) in
+        let confirmAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        confirmAlert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action: UIAlertAction!) in
             completion?()
         }))
         
-        deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
-        present(deleteAlert, animated: true, completion: nil)
+        confirmAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        present(confirmAlert, animated: true, completion: nil)
     }
     
     func showAlert(message:String){
@@ -82,14 +82,16 @@ extension UIViewController{
             let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
-        }    }
+        }
+    }
     
     func showError(message:String){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
             self.present(alert, animated: true, completion: nil)
-        }    }
+        }
+    }
     
     func showError(error:Error){
         delayOnMainQueue {
@@ -105,7 +107,8 @@ extension UIViewController{
             let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
             self.present(alert, animated: true, completion: nil)
-        }    }
+        }
+    }
     
     var alertStyle: UIAlertControllerStyle{
         get{
