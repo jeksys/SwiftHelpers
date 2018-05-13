@@ -15,6 +15,7 @@ extension String {
 
 extension String {
     // NSLocalizedString shorthand
+    // show erros if localization is missing
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
