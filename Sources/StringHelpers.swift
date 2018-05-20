@@ -17,6 +17,7 @@ extension String {
     // NSLocalizedString shorthand
     // show erros if localization is missing
     var localized: String {
+        //TODO: record all unresolved keys
         return NSLocalizedString(self, comment: "")
     }
 }
