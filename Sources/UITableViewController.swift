@@ -8,25 +8,3 @@
 
 import UIKit
 
-extension UITableViewController{
-    
-    func sizeHeaderToFit() {
-        
-        let headerView = tableView.tableHeaderView!
-        let oldHeight = headerView.frame.size.height
-        
-        headerView.setNeedsLayout()
-        headerView.layoutIfNeeded()
-        
-        let height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
-        var frame = headerView.frame
-        frame.size.height = height
-        headerView.frame = frame
-        
-        if oldHeight == headerView.frame.size.height {
-            return
-        }
-        tableView.tableHeaderView = headerView
-    }
-    
-}

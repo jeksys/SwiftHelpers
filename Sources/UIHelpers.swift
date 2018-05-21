@@ -84,7 +84,15 @@ extension UIViewController{
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
+    func showTODO(message:String){
+        delayOnMainQueue {
+            let alert = UIAlertController(title: "TODO. Feature is under development".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
     func showError(message:String){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
