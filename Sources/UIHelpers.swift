@@ -77,10 +77,12 @@ extension UIViewController{
         present(confirmAlert, animated: true, completion: nil)
     }
     
-    func showAlert(message:String){
+    func showAlert(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+                completion?()
+            }))
             self.present(alert, animated: true, completion: nil)
         }
     }
@@ -88,23 +90,27 @@ extension UIViewController{
     func showTODO(message:String){
         delayOnMainQueue {
             let alert = UIAlertController(title: "TODO. Feature is under development".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default))
             self.present(alert, animated: true, completion: nil)
         }
     }
 
-    func showError(message:String){
+    func showError(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel , handler: { (action: UIAlertAction!) in
+                completion?()
+            }))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func showError(error:Error){
+    func showError(error:Error, completion: (()->Void)? = nil){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Error".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
+            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel, handler: { (action: UIAlertAction!) in
+                completion?()
+            }))
             self.present(alert, animated: true, completion: nil)
         }
     }
