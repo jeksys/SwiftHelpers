@@ -81,7 +81,7 @@ open class  ASPNETDateTransformAll: TransformType {
         if let date = value {
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
             return dateFormatter.string(from: date)
         }
         return nil
