@@ -16,9 +16,15 @@ extension String {
 extension String {
     // NSLocalizedString shorthand
     // show erros if localization is missing
+    // show erros if localization is missing
     var localized: String {
         //TODO: record all unresolved keys
-        return NSLocalizedString(self, comment: "")
+        let localizedString = NSLocalizedString(self, comment: "")
+        if localizedString == self{
+            // no localization or localization is not keyed
+        }
+        LocalizationManager.shared.addLocalization(key: self, string: localizedString)
+        return localizedString
     }
 }
 
@@ -68,3 +74,4 @@ extension String {
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
     }
 }
+
