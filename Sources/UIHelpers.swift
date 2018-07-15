@@ -29,7 +29,7 @@ extension UIScrollView{
 
 extension UIViewController{
     
-    func showAskText(_ title: String?, text:String?, actionTitle: String? = "OK".localized, completion: ((String?)->Void)? = nil){
+    func showAskText(_ title: String?, text:String?, actionTitle: String? = "general.ok".localized, completion: ((String?)->Void)? = nil){
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (action: UIAlertAction!) in
@@ -51,7 +51,7 @@ extension UIViewController{
     
     func showMessage(_ title: String, message:String, completion: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK".localized, style: .default, handler: { (action: UIAlertAction!) in
+        alert.addAction(UIAlertAction(title: "general.ok".localized, style: .default, handler: { (action: UIAlertAction!) in
             completion?()
         }))
         self.present(alert, animated: true, completion: nil)
@@ -80,7 +80,7 @@ extension UIViewController{
     func showAlert(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
             let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -90,15 +90,15 @@ extension UIViewController{
     func showTODO(message:String){
         delayOnMainQueue {
             let alert = UIAlertController(title: "TODO. Feature is under development".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.default))
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.default))
             self.present(alert, animated: true, completion: nil)
         }
     }
 
     func showError(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "Error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel , handler: { (action: UIAlertAction!) in
+            let alert = UIAlertController(title: "general.error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel , handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -107,8 +107,8 @@ extension UIViewController{
     
     func showError(error:Error, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "Error".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel, handler: { (action: UIAlertAction!) in
+            let alert = UIAlertController(title: "general.error".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel, handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -119,7 +119,7 @@ extension UIViewController{
         delayOnMainQueue {
             let messageConnection = "Please check your internet connection to continue".localized
             let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertActionStyle.cancel))
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel))
             self.present(alert, animated: true, completion: nil)
         }
     }

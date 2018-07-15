@@ -25,6 +25,18 @@ extension String {
                 }
             }
         }
+        if let (en, fr) = AllLocalizations(self){
+            var _en = en.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+            var _fr = fr.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+            if _en.contains(","){
+               _en = "\"\(_en)\""
+            }
+            if _fr.contains(","){
+                _fr = "\"\(_fr)\""
+            }
+            let loc_area = self.split(separator: ".").first ?? ""
+            LocalizationManager.shared.allLocalizationKeys[self] = "\(self),\(loc_area),\(_en),\(_fr)"
+        }
         LocalizationManager.shared.addLocalization(key: self, string: localizedString)
         return localizedString
     }
@@ -36,4 +48,17 @@ extension String {
         let fallbackString = fallbackBundle.localizedString(forKey: key, value: comment, table: nil)
         return Bundle.main.localizedString(forKey: key, value: fallbackString, table: nil)
     }
+    
+    public func AllLocalizations(_ key: String) -> (String, String)? {
+        guard let baseBundlePath = Bundle.main.path(forResource: "Base", ofType: "lproj") else { return nil }
+        guard let frBundlePath = Bundle.main.path(forResource: "fr", ofType: "lproj") else { return nil }
+        
+        guard let baseBundle = Bundle(path: baseBundlePath) else { return nil }
+        guard let frBundle = Bundle(path: frBundlePath) else { return nil }
+
+        let baseString = baseBundle.localizedString(forKey: key, value: nil, table: nil)
+        let frString = frBundle.localizedString(forKey: baseString, value: baseString, table: nil)
+        return (baseString, frString)
+    }
+
 }
