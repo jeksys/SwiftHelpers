@@ -32,7 +32,7 @@ extension UIViewController{
     func showAskText(_ title: String?, text:String?, actionTitle: String? = "general.ok".localized, completion: ((String?)->Void)? = nil){
         
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel, handler: { (action: UIAlertAction!) in
+        alertController.addAction(UIAlertAction(title: "general.cancel".localized, style: .cancel, handler: { (action: UIAlertAction!) in
             completion?(nil)
         }))
         
@@ -63,7 +63,7 @@ extension UIViewController{
             completion?()
         }))
         
-        deleteAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        deleteAlert.addAction(UIAlertAction(title: "general.cancel".localized, style: .cancel))
         present(deleteAlert, animated: true, completion: nil)
     }
 
@@ -73,13 +73,13 @@ extension UIViewController{
             completion?()
         }))
         
-        confirmAlert.addAction(UIAlertAction(title: "Cancel".localized, style: .cancel))
+        confirmAlert.addAction(UIAlertAction(title: "general.cancel".localized, style: .cancel))
         present(confirmAlert, animated: true, completion: nil)
     }
     
     func showAlert(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "Alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "general.alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
                 completion?()
             }))
