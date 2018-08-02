@@ -13,9 +13,6 @@ extension String {
     }
 }
 
-
-
-
 // indexes
 extension String {
     func index(from: Int) -> Index {
