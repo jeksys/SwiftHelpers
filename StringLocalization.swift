@@ -12,6 +12,37 @@ extension String {
     // NSLocalizedString shorthand
     // show erros if localization is missing
     // show erros if localization is missing
+    
+    func localized(value: String)-> String {
+        //TODO: record all unresolved keys
+        var localizedString = NSLocalizedString(self, comment: "")
+        if localizedString == self {
+            localizedString = NSLocalizedStringFallback(self, comment: "")
+            if LogOptions.localization {
+                if localizedString == self {
+                    print("missing localization: \(self)")
+                }else{
+                    print("missing localization for \(String(describing: Locale.current.languageCode)): \(self)")
+                    localizedString = value
+                }
+            }
+        }
+//        if let (en, fr) = AllLocalizations(self){
+//            var _en = en.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+//            var _fr = fr.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+//            if _en.contains(","){
+//                _en = "\"\(_en)\""
+//            }
+//            if _fr.contains(","){
+//                _fr = "\"\(_fr)\""
+//            }
+//            let loc_area = self.split(separator: ".").first ?? ""
+//            LocalizationManager.shared.allLocalizationKeys[self] = "\(self),\(loc_area),\(_en),\(_fr)"
+//        }
+//        LocalizationManager.shared.addLocalization(key: self, string: localizedString)
+        return localizedString
+    }
+    
     var localized: String {
         //TODO: record all unresolved keys
         var localizedString = NSLocalizedString(self, comment: "")
@@ -25,19 +56,19 @@ extension String {
                 }
             }
         }
-        if let (en, fr) = AllLocalizations(self){
-            var _en = en.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
-            var _fr = fr.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
-            if _en.contains(","){
-               _en = "\"\(_en)\""
-            }
-            if _fr.contains(","){
-                _fr = "\"\(_fr)\""
-            }
-            let loc_area = self.split(separator: ".").first ?? ""
-            LocalizationManager.shared.allLocalizationKeys[self] = "\(self),\(loc_area),\(_en),\(_fr)"
-        }
-        LocalizationManager.shared.addLocalization(key: self, string: localizedString)
+//        if let (en, fr) = AllLocalizations(self){
+//            var _en = en.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+//            var _fr = fr.replacingOccurrences(of: "\n", with: "\\n", options: .literal, range: nil)
+//            if _en.contains(","){
+//               _en = "\"\(_en)\""
+//            }
+//            if _fr.contains(","){
+//                _fr = "\"\(_fr)\""
+//            }
+//            let loc_area = self.split(separator: ".").first ?? ""
+//            LocalizationManager.shared.allLocalizationKeys[self] = "\(self),\(loc_area),\(_en),\(_fr)"
+//        }
+//        LocalizationManager.shared.addLocalization(key: self, string: localizedString)
         return localizedString
     }
     
