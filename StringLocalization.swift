@@ -18,12 +18,14 @@ extension String {
         var localizedString = NSLocalizedString(self, comment: "")
         if localizedString == self {
             localizedString = NSLocalizedStringFallback(self, comment: "")
+            if localizedString == self {
+                localizedString = value
+            }
             if LogOptions.localization {
                 if localizedString == self {
                     print("missing localization: \(self)")
                 }else{
                     print("missing localization for \(String(describing: Locale.current.languageCode)): \(self)")
-                    localizedString = value
                 }
             }
         }
