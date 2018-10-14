@@ -82,6 +82,7 @@ public extension UIDevice {
         case iPhone55
         case iPad
         case iPadPro
+        case iPhoneX
         case Unknown
     }
     
@@ -102,6 +103,8 @@ public extension UIDevice {
             return .iPad
         case 2732:
             return .iPadPro
+        case 2436:
+            return .iPhoneX
         default:
             return .Unknown
         }
