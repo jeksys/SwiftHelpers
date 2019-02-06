@@ -60,3 +60,15 @@ extension String {
     }
 }
 
+extension String {
+    var firstCapitalized: String {
+        let lowercased = self.lowercased()
+        var components = lowercased.components(separatedBy: " ")
+        guard let first = components.first else {
+            return self
+        }
+        components[0] = first.capitalized
+        return components.joined(separator: " ")
+    }
+}
+
