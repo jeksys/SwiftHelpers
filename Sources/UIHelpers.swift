@@ -49,7 +49,7 @@ extension UIViewController{
         
     }
     
-    func showMessage(_ title: String, message:String, completion: (()->Void)? = nil){
+    func showMessage(_ title: String?, message:String, completion: (()->Void)? = nil){
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "general.ok".localized, style: .default, handler: { (action: UIAlertAction!) in
             completion?()
