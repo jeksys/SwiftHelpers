@@ -17,25 +17,23 @@ enum GradientOrientation {
     case vertical
     
     var startPoint : CGPoint {
-        get { return points.startPoint }
+        return points.startPoint
     }
     
     var endPoint : CGPoint {
-        get { return points.endPoint }
+        return points.endPoint
     }
     
     var points : GradientPoints {
-        get {
-            switch(self) {
-            case .topRightBottomLeft:
-                return (CGPoint.init(x: 0.0,y: 1.0), CGPoint.init(x: 1.0,y: 0.0))
-            case .topLeftBottomRight:
-                return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 1,y: 1))
-            case .horizontal:
-                return (CGPoint.init(x: 0.0,y: 0.5), CGPoint.init(x: 1.0,y: 0.5))
-            case .vertical:
-                return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 0.0,y: 1.0))
-            }
+        switch(self) {
+        case .topRightBottomLeft:
+            return (CGPoint.init(x: 0.0,y: 1.0), CGPoint.init(x: 1.0,y: 0.0))
+        case .topLeftBottomRight:
+            return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 1,y: 1))
+        case .horizontal:
+            return (CGPoint.init(x: 0.0,y: 0.5), CGPoint.init(x: 1.0,y: 0.5))
+        case .vertical:
+            return (CGPoint.init(x: 0.0,y: 0.0), CGPoint.init(x: 0.0,y: 1.0))
         }
     }
 }
