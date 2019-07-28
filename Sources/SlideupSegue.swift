@@ -214,7 +214,7 @@ class CustomUnwindSegue: UIStoryboardSegue {
         containerView?.addSubview(toViewController.view)
         
         UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions(), animations: {
-            fromViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+            fromViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi))
             toViewController.view.transform = CGAffineTransform.identity
         }, completion: { finished in
             let fromVC = self.source
