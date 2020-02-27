@@ -31,7 +31,7 @@ extension UIViewController{
     
     func showAskText(_ title: String?, text:String?, actionTitle: String? = "general.ok".localized, completion: ((String?)->Void)? = nil){
         
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
         alertController.addAction(UIAlertAction(title: "general.cancel".localized, style: .cancel, handler: { (action: UIAlertAction!) in
             completion?(nil)
         }))
@@ -50,7 +50,7 @@ extension UIViewController{
     }
     
     func showMessage(_ title: String?, message:String, completion: (()->Void)? = nil){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "general.ok".localized, style: .default, handler: { (action: UIAlertAction!) in
             completion?()
         }))
@@ -58,7 +58,7 @@ extension UIViewController{
     }
     
     func showDeleteAlert(_ title: String?, message:String?, completion: (()->Void)? = nil){
-        let deleteAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let deleteAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         deleteAlert.addAction(UIAlertAction(title: "Delete".localized, style: .destructive, handler: { (action: UIAlertAction!) in
             completion?()
         }))
@@ -68,7 +68,7 @@ extension UIViewController{
     }
 
     func showConfirmActionAlert(_ title: String?, message:String?, actionTitle: String?, completion: (()->Void)? = nil){
-        let confirmAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let confirmAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         confirmAlert.addAction(UIAlertAction(title: actionTitle, style: .destructive, handler: { (action: UIAlertAction!) in
             completion?()
         }))
@@ -79,8 +79,8 @@ extension UIViewController{
     
     func showAlert(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "general.alert".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.default, handler: { (action: UIAlertAction!) in
+            let alert = UIAlertController(title: "general.alert".localized, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertAction.Style.default, handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -89,16 +89,16 @@ extension UIViewController{
 
     func showTODO(message:String){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "TODO. Feature is under development".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.default))
+            let alert = UIAlertController(title: "TODO. Feature is under development".localized, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertAction.Style.default))
             self.present(alert, animated: true, completion: nil)
         }
     }
 
     func showError(message:String, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "general.error".localized, message: message, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel , handler: { (action: UIAlertAction!) in
+            let alert = UIAlertController(title: "general.error".localized, message: message, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertAction.Style.cancel , handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -107,8 +107,8 @@ extension UIViewController{
     
     func showError(error:Error, completion: (()->Void)? = nil){
         delayOnMainQueue {
-            let alert = UIAlertController(title: "general.error".localized, message: error.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel, handler: { (action: UIAlertAction!) in
+            let alert = UIAlertController(title: "general.error".localized, message: error.localizedDescription, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertAction.Style.cancel, handler: { (action: UIAlertAction!) in
                 completion?()
             }))
             self.present(alert, animated: true, completion: nil)
@@ -118,15 +118,15 @@ extension UIViewController{
     func showConnectionError(message:String){
         delayOnMainQueue {
             let messageConnection = "Please check your internet connection to continue".localized
-            let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertActionStyle.cancel))
+            let alert = UIAlertController(title: "You are offline".localized, message: messageConnection, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "general.ok".localized, style: UIAlertAction.Style.cancel))
             self.present(alert, animated: true, completion: nil)
         }
     }
     
-    var alertStyle: UIAlertControllerStyle{
+    var alertStyle: UIAlertController.Style{
         get{
-            let style: UIAlertControllerStyle
+            let style: UIAlertController.Style
             if(UIDevice.current.userInterfaceIdiom == .pad){
                 style = .alert
             }else{

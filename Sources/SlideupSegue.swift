@@ -90,7 +90,7 @@ class CustomSegue: UIStoryboardSegue {
         
         containerView?.addSubview(toViewController.view)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions(), animations: {
             toViewController.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         }, completion: { finished in
             let fromVC = self.source
@@ -113,7 +113,7 @@ class CustomSegue: UIStoryboardSegue {
         toViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi/2))
         containerView?.addSubview(toViewController.view)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIView.AnimationOptions(), animations: {
             fromViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
             toViewController.view.transform = CGAffineTransform.identity
         }, completion: { finished in
@@ -192,7 +192,7 @@ class CustomUnwindSegue: UIStoryboardSegue {
         
         fromViewController.view.superview?.insertSubview(toViewController.view, at: 0)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions(), animations: {
             fromViewController.view.transform = CGAffineTransform(scaleX: 0.05, y: 0.05)
         }, completion: { finished in
             let fromVC = self.source
@@ -213,7 +213,7 @@ class CustomUnwindSegue: UIStoryboardSegue {
         let containerView = fromViewController.view.superview
         containerView?.addSubview(toViewController.view)
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIViewAnimationOptions(), animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: UIView.AnimationOptions(), animations: {
             fromViewController.view.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi))
             toViewController.view.transform = CGAffineTransform.identity
         }, completion: { finished in

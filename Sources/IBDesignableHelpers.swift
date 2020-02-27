@@ -81,7 +81,7 @@ import Foundation
     func kern(kerningValue:CGFloat) {
         if let text = self.titleLabel!.text{
             let attributedString =  NSMutableAttributedString(attributedString: self.titleLabel!.attributedText ?? NSMutableAttributedString(string: text))
-            attributedString.addAttribute(NSAttributedStringKey.kern, value: kern, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.kern, value: kern, range: NSMakeRange(0, attributedString.length))
             self.setAttributedTitle(attributedString, for: .normal)
         }
     }
@@ -101,7 +101,7 @@ import Foundation
     func kern(kerningValue:CGFloat) {
         if let text = self.text{
             let attributedString =  NSMutableAttributedString(attributedString: self.attributedText ?? NSMutableAttributedString(string: text))
-            attributedString.addAttribute(NSAttributedStringKey.kern, value: kern, range: NSMakeRange(0, attributedString.length))
+            attributedString.addAttribute(NSAttributedString.Key.kern, value: kern, range: NSMakeRange(0, attributedString.length))
             self.attributedText =  attributedString
         }
     }

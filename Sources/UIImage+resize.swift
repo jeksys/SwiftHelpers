@@ -12,7 +12,7 @@ extension UIImage {
     
     public func resize(to sizeMB: Float) -> UIImage? {
         
-        if let data = UIImageJPEGRepresentation(self, 0.9){
+        if let data = self.jpegData(compressionQuality: 0.9){
             let size = Float(data.count)
             let percentage = sizeMB / (size/1024/1024)
             return self.resizeWithPercent(percentage: CGFloat(percentage))
